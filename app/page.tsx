@@ -3,9 +3,18 @@
 import { useAuth } from "@/contexts/AuthContext";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getProfiles, saveProfile } from "./util";
 
 export default function Home() {
   const { user, loading, signOut } = useAuth();
+  const [message, setMessage] = useState("");
+  const [profiles, setProfiles] = useState<{ memo: string }>();
+  useEffect(() => {
+    getProfiles().then((profiles) => {
+      setProfiles(profiles[0]);
+    });
+  }, []);
 
   if (loading) {
     return (
@@ -120,6 +129,33 @@ export default function Home() {
                   >
                     Sign Out
                   </button>
+
+                  <div className="flex items-center gap-4 pt-4">
+                    <input
+                      id="message"
+                      type="text"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      required
+                      className="input-field"
+                      placeholder="message"
+                    />
+                    <button
+                      onClick={async () => {
+                        await saveProfile(message);
+
+                        getProfiles().then((profiles) => {
+                          setProfiles(profiles[0]);
+                        });
+                      }}
+                      className="w-24 py-3 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors duration-200"
+                    >
+                      Send
+                    </button>
+                  </div>
+                  <div className="flex text-[white]">
+                    <div>memo: {profiles?.memo}</div>
+                  </div>
                 </div>
               ) : (
                 <div className="space-y-6">
