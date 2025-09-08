@@ -1,0 +1,58 @@
+{
+  "common": {
+    "welcome": "Bienvenue",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "message": "message",
+    "send": "Envoyer"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "signup": "S'inscrire"
+  },
+  "auth": {
+    "login": {
+      "title": "Bon retour",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signUpLink": "Inscrivez-vous ici",
+      "description": "Connectez-vous à votre compte pour continuer"
+    },
+    "signup": {
+      "title": "Créer un compte",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "Créer un compte",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "loginLink": "Connectez-vous ici",
+      "description": "Commencez avec votre compte gratuit"
+    },
+    "errors": {
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+      "loginFailed": "Échec de la connexion. Vérifiez vos identifiants.",
+      "signupFailed": "Échec de l'inscription. Veuillez réessayer."
+    }
+  },
+  "home": {
+    "title": "Bienvenue dans Mon App",
+    "subtitle": "Une application Next.js moderne avec authentification",
+    "getStarted": "Commencer",
+    "learnMore": "En savoir plus"
+  }
+}

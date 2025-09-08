@@ -2,12 +2,14 @@
 
 import LoginForm from "@/components/LoginForm";
 import SignupForm from "@/components/SignupForm";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function AuthPage() {
   const [activeTab, setActiveTab] = useState<"login" | "signup">("login");
   const router = useRouter();
+  const t = useTranslations();
 
   const handleSuccess = () => {
     router.push("/");
@@ -36,12 +38,14 @@ export default function AuthPage() {
               </svg>
             </div>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              {activeTab === "login" ? "Welcome back" : "Create account"}
+              {activeTab === "login"
+                ? t("auth.login.title")
+                : t("auth.signup.title")}
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               {activeTab === "login"
-                ? "Sign in to your account to continue"
-                : "Get started with your free account"}
+                ? t("auth.login.description")
+                : t("auth.signup.description")}
             </p>
           </div>
 
@@ -55,7 +59,7 @@ export default function AuthPage() {
                   : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               }`}
             >
-              Sign In
+              {t("navigation.login")}
             </button>
             <button
               onClick={() => setActiveTab("signup")}
@@ -65,7 +69,7 @@ export default function AuthPage() {
                   : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               }`}
             >
-              Sign Up
+              {t("navigation.signup")}
             </button>
           </div>
 
@@ -98,7 +102,7 @@ export default function AuthPage() {
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            Back to Home
+            {t("navigation.home")}
           </button>
         </div>
       </div>

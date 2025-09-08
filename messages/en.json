@@ -1,0 +1,58 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "message": "message",
+    "send": "Send"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "signup": "Sign Up"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot Password?",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up here",
+      "description": "Sign in to your account to continue"
+    },
+    "signup": {
+      "title": "Create account",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in here",
+      "description": "Get started with your free account"
+    },
+    "errors": {
+      "invalidEmail": "Please enter a valid email address",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "passwordsDoNotMatch": "Passwords do not match",
+      "loginFailed": "Login failed. Please check your credentials.",
+      "signupFailed": "Sign up failed. Please try again."
+    }
+  },
+  "home": {
+    "title": "Welcome to My App",
+    "subtitle": "A modern Next.js application with authentication",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  }
+}

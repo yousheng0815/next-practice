@@ -1,0 +1,58 @@
+{
+  "common": {
+    "welcome": "Bienvenido",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "message": "mensaje",
+    "send": "Enviar"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "signup": "Registrarse"
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenido de vuelta",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar Sesión",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUpLink": "Regístrate aquí",
+      "description": "Inicia sesión en tu cuenta para continuar"
+    },
+    "signup": {
+      "title": "Crear cuenta",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña",
+      "submit": "Crear Cuenta",
+      "hasAccount": "¿Ya tienes una cuenta?",
+      "loginLink": "Inicia sesión aquí",
+      "description": "Comienza con tu cuenta gratuita"
+    },
+    "errors": {
+      "invalidEmail": "Por favor ingresa una dirección de correo válida",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden",
+      "loginFailed": "Error al iniciar sesión. Verifica tus credenciales.",
+      "signupFailed": "Error al registrarse. Inténtalo de nuevo."
+    }
+  },
+  "home": {
+    "title": "Bienvenido a Mi App",
+    "subtitle": "Una aplicación moderna de Next.js con autenticación",
+    "getStarted": "Comenzar",
+    "learnMore": "Aprende Más"
+  }
+}

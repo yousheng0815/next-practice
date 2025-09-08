@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 interface LoginFormProps {
@@ -13,6 +14,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { signIn } = useAuth();
+  const t = useTranslations();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
           htmlFor="email"
           className="block text-sm font-semibold text-gray-700 dark:text-gray-300"
         >
-          Email Address
+          {t("auth.login.email")}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -62,7 +64,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
             onChange={(e) => setEmail(e.target.value)}
             required
             className="input-field pl-10"
-            placeholder="Enter your email address"
+            placeholder={t("auth.login.email")}
           />
         </div>
       </div>
@@ -72,7 +74,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
           htmlFor="password"
           className="block text-sm font-semibold text-gray-700 dark:text-gray-300"
         >
-          Password
+          {t("auth.login.password")}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -97,7 +99,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
             onChange={(e) => setPassword(e.target.value)}
             required
             className="input-field pl-10"
-            placeholder="Enter your password"
+            placeholder={t("auth.login.password")}
           />
         </div>
       </div>
@@ -149,10 +151,10 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            Signing in...
+            {t("common.loading")}
           </div>
         ) : (
-          "Sign In"
+          t("auth.login.submit")
         )}
       </button>
     </form>

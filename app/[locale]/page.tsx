@@ -1,19 +1,22 @@
 "use client";
 
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useAuth } from "@/contexts/AuthContext";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getProfiles, saveProfile } from "./util";
+import { getProfiles, saveProfile } from "../util";
 
 export default function Home() {
   const { user, loading, signOut } = useAuth();
   const [message, setMessage] = useState("");
   const [profiles, setProfiles] = useState<{ memo: string }>();
+  const t = useTranslations();
   useEffect(() => {
-    getProfiles().then((profiles) => {
-      setProfiles(profiles[0]);
-    });
+    // getProfiles().then((profiles) => {
+    //   setProfiles(profiles[0]);
+    // });
   }, []);
 
   if (loading) {
@@ -27,7 +30,7 @@ export default function Home() {
             </div>
           </div>
           <p className="mt-6 text-white/80 text-lg font-medium">
-            Loading your experience...
+            {t("common.loading")}
           </p>
         </div>
       </div>
@@ -57,16 +60,22 @@ export default function Home() {
             </div>
             <span className="text-white font-bold text-xl">MyApp</span>
           </div>
-          {user && (
-            <button onClick={() => signOut()} className="btn-secondary text-sm">
-              Sign Out
-            </button>
-          )}
+          <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
+            {user && (
+              <button
+                onClick={() => signOut()}
+                className="btn-secondary text-sm"
+              >
+                {t("navigation.logout")}
+              </button>
+            )}
+          </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main className="relative z-10 px-6 py-12">
+      <main className="relative px-6 py-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Hero Section */}
           <div className="animate-fade-in">
@@ -82,14 +91,14 @@ export default function Home() {
                 />
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                {user ? `Welcome back!` : `Welcome to MyApp`}
+                {user ? t("common.welcome") + "!" : t("home.title")}
               </h1>
               <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
                 {user
                   ? `Hello ${
                       user.email?.split("@")[0]
                     }! You're successfully signed in and ready to explore.`
-                  : `A beautiful, modern authentication system built with Next.js and Supabase. Sign in or create an account to get started.`}
+                  : t("home.subtitle")}
               </p>
             </div>
 
@@ -114,7 +123,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      Authenticated
+                      {t("auth.login.title")}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-4">
                       You&apos;re successfully signed in
@@ -127,7 +136,7 @@ export default function Home() {
                     onClick={() => signOut()}
                     className="w-full py-3 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors duration-200"
                   >
-                    Sign Out
+                    {t("navigation.logout")}
                   </button>
 
                   <div className="flex items-center gap-4 pt-4">
@@ -138,7 +147,7 @@ export default function Home() {
                       onChange={(e) => setMessage(e.target.value)}
                       required
                       className="input-field"
-                      placeholder="message"
+                      placeholder={t("common.message")}
                     />
                     <button
                       onClick={async () => {
@@ -150,7 +159,7 @@ export default function Home() {
                       }}
                       className="w-24 py-3 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors duration-200"
                     >
-                      Send
+                      {t("common.send")}
                     </button>
                   </div>
                   <div className="flex text-[white]">
@@ -176,7 +185,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      Get Started
+                      {t("home.getStarted")}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-6">
                       Sign in or create an account to continue
@@ -186,7 +195,7 @@ export default function Home() {
                     href="/auth"
                     className="btn-primary w-full py-3 text-base font-semibold inline-block"
                   >
-                    Sign In / Sign Up
+                    {t("navigation.login")} / {t("navigation.signup")}
                   </Link>
                 </div>
               )}

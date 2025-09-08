@@ -1,6 +1,7 @@
 "use client";
 
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 interface SignupFormProps {
@@ -15,6 +16,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { signUp } = useAuth();
+  const t = useTranslations();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,13 +25,13 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
     setSuccess("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError(t("auth.errors.passwordsDoNotMatch"));
       setLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
+      setError(t("auth.errors.passwordTooShort"));
       setLoading(false);
       return;
     }
@@ -53,7 +55,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           htmlFor="signup-email"
           className="block text-sm font-semibold text-gray-700 dark:text-gray-300"
         >
-          Email Address
+          {t("auth.signup.email")}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -78,7 +80,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             onChange={(e) => setEmail(e.target.value)}
             required
             className="input-field pl-10"
-            placeholder="Enter your email address"
+            placeholder={t("auth.signup.email")}
           />
         </div>
       </div>
@@ -88,7 +90,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           htmlFor="signup-password"
           className="block text-sm font-semibold text-gray-700 dark:text-gray-300"
         >
-          Password
+          {t("auth.signup.password")}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -113,11 +115,11 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             onChange={(e) => setPassword(e.target.value)}
             required
             className="input-field pl-10"
-            placeholder="Create a strong password"
+            placeholder={t("auth.signup.password")}
           />
         </div>
         <p className="text-xs text-gray-500 dark:text-gray-400">
-          Must be at least 6 characters long
+          {t("auth.errors.passwordTooShort")}
         </p>
       </div>
 
@@ -126,7 +128,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           htmlFor="confirm-password"
           className="block text-sm font-semibold text-gray-700 dark:text-gray-300"
         >
-          Confirm Password
+          {t("auth.signup.confirmPassword")}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -151,7 +153,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             className="input-field pl-10"
-            placeholder="Confirm your password"
+            placeholder={t("auth.signup.confirmPassword")}
           />
         </div>
       </div>
@@ -224,10 +226,10 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            Creating account...
+            {t("common.loading")}
           </div>
         ) : (
-          "Create Account"
+          t("auth.signup.submit")
         )}
       </button>
     </form>
